@@ -1,17 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Text;
 
 namespace ResumeBase.Model
 {
     class Resume : IComparable<Resume>
     {
-        private string uuid { get; set; }
+        private string _uuid;
+
+        public Resume(string uuid)
+        {
+            _uuid = uuid;
+        }
+
+        public string Uuid
+        {
+            get
+            {
+                return this._uuid;
+            }
+            set
+            {
+                this._uuid = value;
+            }
+        }
 
         public override string ToString()
         {
-            return uuid;
+            return _uuid;
         }
 
         public override bool Equals(Object o)
@@ -25,18 +40,18 @@ namespace ResumeBase.Model
                 return false;
             }
             Resume resume = (Resume)o;
-            return uuid.Equals(resume.uuid);
+            return _uuid.Equals(resume._uuid);
         }
 
         public int CompareTo([AllowNull] Resume other)
         {
             if (other == null) return 1;
-            return this.uuid.CompareTo(other.uuid);
+            return this._uuid.CompareTo(other._uuid);
         }
 
         public override int GetHashCode()
         {
-            return uuid.GetHashCode();
+            return _uuid.GetHashCode();
         }
     }
 }
