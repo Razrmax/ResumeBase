@@ -27,7 +27,7 @@ namespace ResumeBase.storage
                 return resumeStorage;
             }
             Resume[] newStorage = new Resume[STORAGE_LIMIT];
-            Array.ConstrainedCopy(resumeStorage, 0, newStorage, resumeCounter - 1, resumeCounter);
+            Array.Copy(resumeStorage, 0, newStorage, 0, resumeCounter);
             return newStorage;
         }
 
